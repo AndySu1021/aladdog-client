@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NumberKeyboard extends StatelessWidget {
-  const NumberKeyboard({super.key});
+  final TextEditingController? controller;
+  const NumberKeyboard({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +14,13 @@ class NumberKeyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NumberButton(1, click: () {
-                print(1);
+                controller?.text = '${controller!.text}1';
               }),
               NumberButton(2, click: () {
-                print(2);
+                controller?.text = '${controller!.text}2';
               }),
               NumberButton(3, click: () {
-                print(3);
+                controller?.text = '${controller!.text}3';
               }),
             ],
           ),
@@ -30,13 +31,13 @@ class NumberKeyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NumberButton(4, click: () {
-                print(4);
+                controller?.text = '${controller!.text}4';
               }),
               NumberButton(5, click: () {
-                print(5);
+                controller?.text = '${controller!.text}5';
               }),
               NumberButton(6, click: () {
-                print(6);
+                controller?.text = '${controller!.text}6';
               }),
             ],
           ),
@@ -47,13 +48,13 @@ class NumberKeyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NumberButton(7, click: () {
-                print(7);
+                controller?.text = '${controller!.text}7';
               }),
               NumberButton(8, click: () {
-                print(8);
+                controller?.text = '${controller!.text}8';
               }),
               NumberButton(9, click: () {
-                print(9);
+                controller?.text = '${controller!.text}9';
               }),
             ],
           ),
@@ -64,7 +65,7 @@ class NumberKeyboard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               NumberButton(0, click: () {
-                print(0);
+                controller?.text = '${controller!.text}0';
               }),
             ],
           ),
@@ -78,7 +79,7 @@ class NumberKeyboard extends StatelessWidget {
                 width: 80,
                 child: OutlinedButton(
                   onPressed: () {
-                    print(123);
+                    controller?.text = '';
                   },
                   style: OutlinedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(181, 181, 181, 1),
@@ -94,7 +95,8 @@ class NumberKeyboard extends StatelessWidget {
                 width: 80,
                 child: IconButton(
                     onPressed: () {
-                      print(123);
+                      controller?.text = controller!.text
+                          .substring(0, controller!.text.length - 1);
                     },
                     iconSize: 35,
                     icon: const Icon(Icons.backspace)),

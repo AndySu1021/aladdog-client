@@ -2,8 +2,10 @@ import 'package:aladdog_client/component/NumberKeyboard.dart';
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+var _numberInputCtrl = TextEditingController();
+
 class PunchPage extends StatelessWidget {
-  const PunchPage({super.key});
+  const PunchPage({super.key, txt});
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +44,12 @@ class PunchPage extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const SizedBox(
+            SizedBox(
               width: 250,
               child: TextField(
-                decoration: InputDecoration(
+                enabled: false,
+                controller: _numberInputCtrl,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -55,7 +59,7 @@ class PunchPage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  print(123);
+                  Navigator.pop(context, true);
                 },
                 style: ElevatedButton.styleFrom(fixedSize: const Size(120, 90)),
                 child: const Text('送出'))
@@ -64,10 +68,10 @@ class PunchPage extends StatelessWidget {
         const VerticalDivider(
           width: 80,
         ),
-        const Expanded(
+        Expanded(
           child: Column(
             children: [
-              NumberKeyboard(),
+              NumberKeyboard(controller: _numberInputCtrl),
             ],
           ),
         ),

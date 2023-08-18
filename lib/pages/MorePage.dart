@@ -1,8 +1,40 @@
 import 'package:aladdog_client/pages/PunchPage.dart';
+import 'package:aladdog_client/pages/more/CounterRecord.dart';
+import 'package:aladdog_client/pages/more/DeviceSetting.dart';
+import 'package:aladdog_client/pages/more/PunchRecord.dart';
+import 'package:aladdog_client/pages/more/SettleRecord.dart';
 import 'package:flutter/material.dart';
 
-class MorePage extends StatelessWidget {
+import 'more/CheckInfo.dart';
+import 'more/OrderRecord.dart';
+
+enum MorePageCategory {
+  orderRecord,
+  punchRecord,
+  counterRecord,
+  settleRecord,
+  deviceSetting,
+  checkInfo,
+}
+
+class MorePage extends StatefulWidget {
   const MorePage({super.key});
+
+  @override
+  State<MorePage> createState() => _MorePageState();
+}
+
+class _MorePageState extends State<MorePage> {
+  MorePageCategory _currentPage = MorePageCategory.orderRecord;
+
+  final _pageMap = <MorePageCategory, Widget>{
+    MorePageCategory.orderRecord: const OrderRecord(),
+    MorePageCategory.punchRecord: const PunchRecord(),
+    MorePageCategory.counterRecord: const CounterRecord(),
+    MorePageCategory.settleRecord: const SettleRecord(),
+    MorePageCategory.deviceSetting: const DeviceSetting(),
+    MorePageCategory.checkInfo: const CheckInfo(),
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -35,65 +67,53 @@ class MorePage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Container(
-                          height: 42,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(215, 215, 215, 1))),
-                          ),
-                          child: const Text('交易紀錄'),
+                        MorePageNavButton(
+                          '點餐紀錄',
+                          click: () {
+                            setState(() {
+                              _currentPage = MorePageCategory.orderRecord;
+                            });
+                          },
                         ),
-                        Container(
-                          height: 42,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(215, 215, 215, 1))),
-                          ),
-                          child: const Text('打卡紀錄'),
+                        MorePageNavButton(
+                          '打卡紀錄',
+                          click: () {
+                            setState(() {
+                              _currentPage = MorePageCategory.punchRecord;
+                            });
+                          },
                         ),
-                        Container(
-                          height: 42,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(215, 215, 215, 1))),
-                          ),
-                          child: const Text('錢櫃紀錄'),
+                        MorePageNavButton(
+                          '錢櫃紀錄',
+                          click: () {
+                            setState(() {
+                              _currentPage = MorePageCategory.counterRecord;
+                            });
+                          },
                         ),
-                        Container(
-                          height: 42,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(215, 215, 215, 1))),
-                          ),
-                          child: const Text('關帳/小結紀錄'),
+                        MorePageNavButton(
+                          '關帳/小結紀錄',
+                          click: () {
+                            setState(() {
+                              _currentPage = MorePageCategory.settleRecord;
+                            });
+                          },
                         ),
-                        Container(
-                          height: 42,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(215, 215, 215, 1))),
-                          ),
-                          child: const Text('周邊硬體'),
+                        MorePageNavButton(
+                          '周邊硬體',
+                          click: () {
+                            setState(() {
+                              _currentPage = MorePageCategory.deviceSetting;
+                            });
+                          },
                         ),
-                        Container(
-                          height: 42,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: Color.fromRGBO(215, 215, 215, 1))),
-                          ),
-                          child: const Text('查看資訊'),
+                        MorePageNavButton(
+                          '查看資訊',
+                          click: () {
+                            setState(() {
+                              _currentPage = MorePageCategory.checkInfo;
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -145,8 +165,10 @@ class MorePage extends StatelessWidget {
                   ],
                 ),
               ),
-              const Expanded(
-                child: Placeholder(),
+              Expanded(
+                child: Container(
+                  child: _pageMap[_currentPage],
+                ),
               ),
             ],
           ),
@@ -183,6 +205,29 @@ class OpButton extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             textStyle: const TextStyle(fontSize: 14),
             side: BorderSide(color: borderColor)),
+        child: Text(title),
+      ),
+    );
+  }
+}
+
+class MorePageNavButton extends StatelessWidget {
+  final String title;
+  final VoidCallback? click;
+  const MorePageNavButton(this.title, {super.key, this.click});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 42,
+      alignment: Alignment.center,
+      decoration: const BoxDecoration(
+        border:
+            Border(bottom: BorderSide(color: Color.fromRGBO(215, 215, 215, 1))),
+      ),
+      child: TextButton(
+        onPressed: click,
+        style: TextButton.styleFrom(foregroundColor: Colors.black),
         child: Text(title),
       ),
     );
