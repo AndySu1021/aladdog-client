@@ -100,7 +100,15 @@ class MorePage extends StatelessWidget {
                     Column(
                       children: [
                         OpButton('打卡', click: () {
-                          print(123);
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                const SimpleDialog(
+                                    contentPadding: EdgeInsets.all(50),
+                                    children: [
+                                  PunchPage(),
+                                ]),
+                          );
                         }),
                         const SizedBox(
                           height: 10,
@@ -138,7 +146,7 @@ class MorePage extends StatelessWidget {
                 ),
               ),
               const Expanded(
-                child: PunchPage(),
+                child: Placeholder(),
               ),
             ],
           ),
