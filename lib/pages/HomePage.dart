@@ -1,7 +1,33 @@
+import 'package:aladdog_client/pages/BookingPage.dart';
+import 'package:aladdog_client/pages/OrderPage.dart';
+import 'package:aladdog_client/pages/QueuePage.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+import 'MorePage.dart';
+
+enum NavPage {
+  orderPage,
+  queuePage,
+  bookingPage,
+  morePage,
+}
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  NavPage _currentPage = NavPage.morePage;
+
+  final _pageMap = <NavPage, Widget>{
+    NavPage.orderPage: const OrderPage(),
+    NavPage.queuePage: const QueuePage(),
+    NavPage.bookingPage: const BookingPage(),
+    NavPage.morePage: const MorePage(),
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -46,26 +72,34 @@ class HomePage extends StatelessWidget {
                             height: 32,
                           ),
                           NavIconButton('點餐', Icons.fastfood_sharp, click: () {
-                            print(123);
+                            setState(() {
+                              _currentPage = NavPage.orderPage;
+                            });
                           }),
                           const SizedBox(
                             height: 8,
                           ),
                           NavIconButton('排隊', Icons.people, click: () {
-                            print(123);
+                            setState(() {
+                              _currentPage = NavPage.queuePage;
+                            });
                           }),
                           const SizedBox(
                             height: 8,
                           ),
                           NavIconButton('預約', Icons.date_range, click: () {
-                            print(123);
+                            setState(() {
+                              _currentPage = NavPage.bookingPage;
+                            });
                           }),
                         ],
                       ),
                       Column(
                         children: [
                           NavIconButton('更多', Icons.more_horiz, click: () {
-                            print(123);
+                            setState(() {
+                              _currentPage = NavPage.morePage;
+                            });
                           }),
                           const SizedBox(
                             height: 40,
@@ -88,9 +122,9 @@ class HomePage extends StatelessWidget {
                 )),
             Expanded(
               child: Container(
-                width: 120,
                 height: double.infinity,
                 decoration: const BoxDecoration(color: Colors.white),
+                child: _pageMap[_currentPage],
               ),
             )
           ],
