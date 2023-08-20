@@ -25,7 +25,7 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> {
-  MorePageCategory _currentPage = MorePageCategory.orderRecord;
+  MorePageCategory _currentPage = MorePageCategory.punchRecord;
 
   final _pageMap = <MorePageCategory, Widget>{
     MorePageCategory.orderRecord: const OrderRecord(),
@@ -166,8 +166,17 @@ class _MorePageState extends State<MorePage> {
                 ),
               ),
               Expanded(
-                child: Container(
-                  child: _pageMap[_currentPage],
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: const BoxDecoration(
+                            color: Color.fromRGBO(238, 238, 238, 1)),
+                        child: _pageMap[_currentPage],
+                      ),
+                    )
+                  ],
                 ),
               ),
             ],
