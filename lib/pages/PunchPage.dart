@@ -59,6 +59,7 @@ class PunchPage extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
+                  _numberInputCtrl.text = '';
                   Navigator.pop(context, true);
                 },
                 style: ElevatedButton.styleFrom(fixedSize: const Size(120, 90)),

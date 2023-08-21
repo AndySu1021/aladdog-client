@@ -6,7 +6,12 @@ class AppColumn {
   final String prop;
   final String label;
   final Function? formatter;
-  const AppColumn({required this.prop, required this.label, this.formatter});
+  final bool visible;
+  const AppColumn(
+      {required this.prop,
+      required this.label,
+      this.formatter,
+      this.visible = true});
 }
 
 class AppDataSource extends DataGridSource {
@@ -60,8 +65,13 @@ class AppTable extends StatefulWidget {
   final List<AppColumn> columns;
   final List<Map> rows;
   final int total;
+  final Function? onCellTap;
   const AppTable(
-      {super.key, required this.columns, this.rows = const [], this.total = 0});
+      {super.key,
+      required this.columns,
+      this.rows = const [],
+      this.total = 0,
+      this.onCellTap});
 
   @override
   State<AppTable> createState() => _AppTableState();
@@ -69,7 +79,6 @@ class AppTable extends StatefulWidget {
 
 class _AppTableState extends State<AppTable> {
   late AppDataSource _dataSource;
-  final double _dataPagerHeight = 60.0;
 
   @override
   void initState() {
@@ -87,17 +96,26 @@ class _AppTableState extends State<AppTable> {
                 data: SfDataGridThemeData(
                     headerColor: const Color.fromRGBO(245, 245, 245, 1)),
                 child: SfDataGrid(
+                  onCellTap: (details) {
+                    if (widget.onCellTap != null) {
+                      widget.onCellTap!(details.rowColumnIndex.rowIndex - 1,
+                          details.rowColumnIndex.columnIndex);
+                    }
+                  },
                   rowsPerPage: 10,
                   columnWidthMode: ColumnWidthMode.fill,
                   source: _dataSource,
                   columns: widget.columns
                       .map(
                         (item) => GridColumn(
+                            visible: item.visible,
                             columnName: item.prop,
                             label: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 16.0),
                                 alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20)),
                                 child: Text(
                                   item.label,
                                   overflow: TextOverflow.ellipsis,

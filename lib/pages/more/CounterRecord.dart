@@ -32,6 +32,7 @@ class _CounterRecordState extends State<CounterRecord> {
         padding: const EdgeInsets.all(20),
         child: AppTable(
           columns: <AppColumn>[
+            const AppColumn(prop: 'id', label: '編號', visible: false),
             const AppColumn(prop: 'created_at', label: '時間'),
             const AppColumn(prop: 'operator', label: '操作者'),
             AppColumn(
@@ -49,41 +50,31 @@ class _CounterRecordState extends State<CounterRecord> {
           ],
           rows: const [
             {
+              'id': 1,
               'created_at': '2023/07/07 15:00',
               'operator': '安迪',
               'type': 1,
               'note': '進貨',
-              'amount': 12300
+              'amount': 1234
             },
             {
+              'id': 2,
               'created_at': '2023/07/07 15:00',
-              'operator': '安迪',
+              'operator': '大班',
               'type': 1,
               'note': '進貨',
-              'amount': 123
+              'amount': 2345
             },
             {
+              'id': 3,
               'created_at': '2023/07/07 15:00',
-              'operator': '安迪',
-              'type': 1,
+              'operator': '烏龜',
+              'type': 2,
               'note': '進貨',
-              'amount': 123
+              'amount': 4567
             },
             {
-              'created_at': '2023/07/07 15:00',
-              'operator': '安迪',
-              'type': 1,
-              'note': '進貨',
-              'amount': 123
-            },
-            {
-              'created_at': '2023/07/07 15:00',
-              'operator': '安迪',
-              'type': 1,
-              'note': '進貨',
-              'amount': 123
-            },
-            {
+              'id': 4,
               'created_at': '2023/07/07 15:00',
               'operator': '安迪',
               'type': 1,
@@ -91,6 +82,7 @@ class _CounterRecordState extends State<CounterRecord> {
               'amount': 123
             },
             {
+              'id': 5,
               'created_at': '2023/07/07 15:00',
               'operator': '安迪',
               'type': 1,
@@ -98,6 +90,7 @@ class _CounterRecordState extends State<CounterRecord> {
               'amount': 123
             },
             {
+              'id': 6,
               'created_at': '2023/07/07 15:00',
               'operator': '安迪',
               'type': 1,
@@ -105,6 +98,7 @@ class _CounterRecordState extends State<CounterRecord> {
               'amount': 123
             },
             {
+              'id': 7,
               'created_at': '2023/07/07 15:00',
               'operator': '安迪',
               'type': 1,
@@ -112,6 +106,23 @@ class _CounterRecordState extends State<CounterRecord> {
               'amount': 123
             },
             {
+              'id': 8,
+              'created_at': '2023/07/07 15:00',
+              'operator': '安迪',
+              'type': 1,
+              'note': '進貨',
+              'amount': 123
+            },
+            {
+              'id': 9,
+              'created_at': '2023/07/07 15:00',
+              'operator': '安迪',
+              'type': 1,
+              'note': '進貨',
+              'amount': 123
+            },
+            {
+              'id': 10,
               'created_at': '2023/07/07 15:00',
               'operator': '安迪',
               'type': 1,
