@@ -1,153 +1,126 @@
+import 'package:aladdog_client/component/AppTable.dart';
 import 'package:flutter/material.dart';
 
-class PunchRecord extends StatelessWidget {
+import '../../component/DateRangePicker.dart';
+
+class PunchRecord extends StatefulWidget {
   const PunchRecord({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Column(children: [
-      Row(
-        children: [
-          ElevatedButton(onPressed: null, child: Text('開始時間')),
-          ElevatedButton(onPressed: null, child: Text('結束時間'))
-        ],
-      ),
-      SizedBox(
-        height: 24,
-      ),
-      MyTable(
-        columns: ['員工姓名', '員工編號', '打卡日期', '上班時間', '下班時間', '時數'],
-      )
-    ]);
-  }
+  State<PunchRecord> createState() => _PunchRecordState();
 }
 
-class MyTable extends StatelessWidget {
-  final List<String> columns;
-  const MyTable({super.key, required this.columns});
-
+class _PunchRecordState extends State<PunchRecord> {
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: TableBorder.all(),
-      // columnWidths: const <int, TableColumnWidth>{
-      //   0: IntrinsicColumnWidth(),
-      //   1: FlexColumnWidth(),
-      //   2: FixedColumnWidth(64),
-      // },
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      children: const <TableRow>[
-        TableRow(
-          children: <Widget>[
-            TableCell(
-              child: Text('員工姓名', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('員工編號', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('打卡日期', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('上班時間', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('下班時間', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('時數', textAlign: TextAlign.center),
-            ),
+    return Column(children: [
+      const DateRangePicker(),
+      const SizedBox(
+        height: 24,
+      ),
+      Expanded(
+          child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(8)),
+        padding: const EdgeInsets.all(20),
+        child: AppTable(
+          columns: <AppColumn>[
+            const AppColumn(prop: 'name', label: '員工姓名'),
+            const AppColumn(prop: 'code', label: '員工編號'),
+            const AppColumn(prop: 'punch_date', label: '打卡日期'),
+            const AppColumn(prop: 'start_time', label: '上班時間'),
+            const AppColumn(prop: 'end_time', label: '下班時間'),
+            AppColumn(
+                prop: 'total_minutes',
+                label: '時數',
+                formatter: (cellValue) =>
+                    Text('${cellValue ~/ 60} 時 ${cellValue % 60} 分')),
           ],
-        ),
-        TableRow(
-          children: <Widget>[
-            TableCell(
-              child: Text('卡丘', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('123456', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('2023/07/08', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('18:00', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('23:23', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('5時23分', textAlign: TextAlign.center),
-            ),
+          rows: const [
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
+            {
+              'name': '安迪',
+              'code': '123456',
+              'punch_date': '2023/07/07',
+              'start_time': '20:00',
+              'end_time': '02:00',
+              'total_minutes': 123
+            },
           ],
+          total: 20,
         ),
-        TableRow(
-          children: <Widget>[
-            TableCell(
-              child: Text('大班', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('123456', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('2023/07/08', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('18:00', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('23:23', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('5時23分', textAlign: TextAlign.center),
-            ),
-          ],
-        ),
-        TableRow(
-          children: <Widget>[
-            TableCell(
-              child: Text('烏龜', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('123456', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('2023/07/08', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('18:00', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('23:23', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('5時23分', textAlign: TextAlign.center),
-            ),
-          ],
-        ),
-        TableRow(
-          children: <Widget>[
-            TableCell(
-              child: Text('安迪', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('123456', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('2023/07/08', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('18:00', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('23:23', textAlign: TextAlign.center),
-            ),
-            TableCell(
-              child: Text('5時23分', textAlign: TextAlign.center),
-            ),
-          ],
-        ),
-      ],
-    );
+      )),
+    ]);
   }
 }

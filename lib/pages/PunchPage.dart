@@ -47,7 +47,7 @@ class PunchPage extends StatelessWidget {
             SizedBox(
               width: 250,
               child: TextField(
-                enabled: false,
+                readOnly: true,
                 controller: _numberInputCtrl,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
