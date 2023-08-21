@@ -1,3 +1,4 @@
+import 'package:aladdog_client/pages/CounterPage.dart';
 import 'package:aladdog_client/pages/PunchPage.dart';
 import 'package:aladdog_client/pages/more/CounterRecord.dart';
 import 'package:aladdog_client/pages/more/DeviceSetting.dart';
@@ -131,7 +132,15 @@ class _MorePageState extends State<MorePage> {
                           height: 10,
                         ),
                         OpButton('錢櫃收支', click: () {
-                          print(123);
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                const SimpleDialog(
+                                    contentPadding: EdgeInsets.all(50),
+                                    children: [
+                                  CounterPage(),
+                                ]),
+                          );
                         }),
                         const SizedBox(
                           height: 10,

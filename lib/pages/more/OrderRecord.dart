@@ -16,6 +16,42 @@ const orderDetail = {
   'pay_type': 1,
   'total_amount': 1234,
   'status': 2,
+  'sub_orders': [
+    {
+      'sub_total': 1000,
+      'sub_total_quantity': 3,
+      'created_at': '2023-07-08 18:00',
+      'items': [
+        {
+          'name': '龍蝦沙拉',
+          'quantity': 2,
+          'price': 100,
+        },
+        {
+          'name': '特選安格斯A5和牛牛排',
+          'quantity': 2,
+          'price': 900,
+        }
+      ]
+    },
+    {
+      'sub_total': 1000,
+      'sub_total_quantity': 3,
+      'created_at': '2023-07-08 19:00',
+      'items': [
+        {
+          'name': '龍蝦沙拉',
+          'quantity': 2,
+          'price': 100,
+        },
+        {
+          'name': '特選安格斯A5和牛牛排',
+          'quantity': 2,
+          'price': 900,
+        }
+      ]
+    }
+  ],
 };
 
 const tableData = <Map>[
@@ -211,35 +247,47 @@ class _OrderRecordState extends State<OrderRecord> {
                                 ],
                               )),
                               const SizedBox(
-                                width: 20,
+                                width: 8,
                               ),
                               Expanded(
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: List.generate(
-                                      20,
-                                      (index) => Column(
-                                        children: [
-                                          Container(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 20, horizontal: 80),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              border: Border.all(
-                                                  color: Colors.grey.shade200),
+                                  child: Container(
+                                      alignment: Alignment.topCenter,
+                                      child: SingleChildScrollView(
+                                        padding:
+                                            const EdgeInsets.only(right: 14),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: List.generate(
+                                            20,
+                                            (index) => Column(
+                                              children: [
+                                                Container(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      vertical: 20,
+                                                      horizontal: 80),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                    border: Border.all(
+                                                        color: Colors
+                                                            .grey.shade200),
+                                                  ),
+                                                  child: const Text(
+                                                      '龍蝦沙拉*2   \$600'),
+                                                ),
+                                                const SizedBox(
+                                                  height: 8,
+                                                ),
+                                              ],
                                             ),
-                                            child: const Text('龍蝦沙拉*2   \$600'),
                                           ),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                                        ),
+                                      )))
                             ],
                           ),
                         )
