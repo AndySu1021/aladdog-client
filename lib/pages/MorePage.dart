@@ -25,7 +25,7 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> {
-  MorePageCategory _currentPage = MorePageCategory.settleRecord;
+  MorePageCategory _currentPage = MorePageCategory.orderRecord;
 
   final _pageMap = <MorePageCategory, Widget>{
     MorePageCategory.orderRecord: const OrderRecord(),
@@ -41,17 +41,14 @@ class _MorePageState extends State<MorePage> {
     return Column(
       children: [
         Container(
-            height: 60,
-            alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.all(10),
-            decoration: const BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(color: Color.fromRGBO(215, 215, 215, 1))),
-            ),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text('測試'),
-            )),
+          height: 60,
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.all(10),
+          decoration: const BoxDecoration(
+            border: Border(
+                bottom: BorderSide(color: Color.fromRGBO(215, 215, 215, 1))),
+          ),
+        ),
         Expanded(
           child: Row(
             children: [
