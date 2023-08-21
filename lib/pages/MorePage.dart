@@ -1,4 +1,5 @@
 import 'package:aladdog_client/pages/CounterPage.dart';
+import 'package:aladdog_client/pages/LoginPage.dart';
 import 'package:aladdog_client/pages/PunchPage.dart';
 import 'package:aladdog_client/pages/more/CounterRecord.dart';
 import 'package:aladdog_client/pages/more/DeviceSetting.dart';
@@ -6,6 +7,7 @@ import 'package:aladdog_client/pages/more/PunchRecord.dart';
 import 'package:aladdog_client/pages/more/SettleRecord.dart';
 import 'package:flutter/material.dart';
 
+import 'ShiftSettlePage.dart';
 import 'more/CheckInfo.dart';
 import 'more/OrderRecord.dart';
 
@@ -152,7 +154,10 @@ class _MorePageState extends State<MorePage> {
                           height: 10,
                         ),
                         OpButton('關帳/小結', click: () {
-                          print(123);
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return const ShiftSettlePage();
+                          }));
                         }),
                         const SizedBox(
                           height: 48,
@@ -161,7 +166,10 @@ class _MorePageState extends State<MorePage> {
                             color: const Color.fromRGBO(228, 87, 76, 1),
                             borderColor: const Color.fromRGBO(228, 87, 76, 1),
                             foregroundColor: Colors.white, click: () {
-                          print(123);
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return const LoginPage();
+                          }));
                         }),
                         const SizedBox(
                           height: 16,

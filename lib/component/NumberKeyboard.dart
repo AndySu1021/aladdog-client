@@ -7,7 +7,7 @@ class NumberKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
+      width: 250,
       child: Column(
         children: [
           Row(
@@ -70,7 +70,7 @@ class NumberKeyboard extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 32,
+            height: 24,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,7 +98,7 @@ class NumberKeyboard extends StatelessWidget {
                       controller?.text = controller!.text
                           .substring(0, controller!.text.length - 1);
                     },
-                    iconSize: 35,
+                    iconSize: 30,
                     icon: const Icon(Icons.backspace)),
               ),
               const SizedBox(
@@ -124,7 +124,7 @@ class NumberButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
           foregroundColor: Colors.black,
           shape: const CircleBorder(),
-          fixedSize: const Size(80, 80)),
+          fixedSize: const Size(65, 65)),
       child: Text('$number'),
     );
   }

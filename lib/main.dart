@@ -1,6 +1,7 @@
 import 'package:aladdog_client/pages/HomePage.dart';
 import 'package:aladdog_client/pages/LoginPage.dart';
 import 'package:aladdog_client/pages/ShiftPage.dart';
+import 'package:aladdog_client/pages/ShiftSettlePage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/shift': (context) => const ShiftPage(),
         '/home': (context) => const HomePage(),
+        '/shift/settle': (context) => const ShiftSettlePage(),
       },
     );
   }
