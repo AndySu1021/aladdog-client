@@ -39,6 +39,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^22.2.9
   syncfusion_flutter_datagrid: ^22.2.9
   syncfusion_flutter_core: ^22.2.9
+  syncfusion_flutter_barcodes: ^22.2.9
 
 dev_dependencies:
   flutter_test:
