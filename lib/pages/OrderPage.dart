@@ -100,7 +100,11 @@ class OrderPage extends StatelessWidget {
             Expanded(
               child: Container(
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(color: Colors.amber),
+                  decoration: const BoxDecoration(
+                    border: Border(
+                        right: BorderSide(
+                            color: Color.fromRGBO(215, 215, 215, 1))),
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -169,10 +173,106 @@ class OrderPage extends StatelessWidget {
                     ],
                   )),
             ),
-            const SizedBox(
+            SizedBox(
               width: 330,
               child: Column(
-                children: [],
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 0),
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            print(123);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.redAccent,
+                              fixedSize: const Size(135, 40)),
+                          child: const Text('刪除'),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              print(123);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(135, 40)),
+                            child: const Text('全部清除'))
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView(
+                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      children: List.generate(
+                          20,
+                          (index) => Container(
+                                height: 70,
+                                margin: const EdgeInsets.only(bottom: 10),
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                        color: const Color.fromRGBO(
+                                            161, 161, 161, 0.7))),
+                                child: const Text('特選牛排 *2 | \$2,400'),
+                              )),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(244, 244, 244, 1)),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          '小計',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '\$2,800',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(15),
+                    decoration: const BoxDecoration(
+                        color: Color.fromRGBO(91, 83, 83, 1)),
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            print(123);
+                          },
+                          style: ElevatedButton.styleFrom(
+                              fixedSize: const Size(100, 60)),
+                          child: const Text('送單'),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              print(123);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(180, 60)),
+                            child: const Text('出單'))
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           ],
