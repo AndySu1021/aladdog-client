@@ -1,16 +1,12 @@
 import 'package:aladdog_client/pages/BookingPage.dart';
-import 'package:aladdog_client/pages/OrderPage.dart';
 import 'package:aladdog_client/pages/QueuePage.dart';
+import 'package:aladdog_client/pages/TablePage.dart';
 import 'package:flutter/material.dart';
 
 import 'MorePage.dart';
+import 'OrderPage.dart';
 
-enum NavPage {
-  orderPage,
-  queuePage,
-  bookingPage,
-  morePage,
-}
+enum NavPage { tablePage, queuePage, bookingPage, morePage, orderPage }
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,10 +19,11 @@ class _HomePageState extends State<HomePage> {
   NavPage _currentPage = NavPage.orderPage;
 
   final _pageMap = <NavPage, Widget>{
-    NavPage.orderPage: const OrderPage(),
+    NavPage.tablePage: const TablePage(),
     NavPage.queuePage: const QueuePage(),
     NavPage.bookingPage: const BookingPage(),
     NavPage.morePage: const MorePage(),
+    NavPage.orderPage: const OrderPage(),
   };
 
   @override
@@ -73,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           NavIconButton('點餐', Icons.fastfood_sharp, click: () {
                             setState(() {
-                              _currentPage = NavPage.orderPage;
+                              _currentPage = NavPage.tablePage;
                             });
                           }),
                           const SizedBox(
