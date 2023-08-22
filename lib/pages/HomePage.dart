@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  NavPage _currentPage = NavPage.orderPage;
+  NavPage _currentPage = NavPage.queuePage;
 
   final _pageMap = <NavPage, Widget>{
     NavPage.orderPage: const OrderPage(),

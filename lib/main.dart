@@ -1,3 +1,4 @@
+import 'package:aladdog_client/pages/DemoPage.dart';
 import 'package:aladdog_client/pages/HomePage.dart';
 import 'package:aladdog_client/pages/LoginPage.dart';
 import 'package:aladdog_client/pages/ShiftPage.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/home',
       routes: {
+        '/demo': (context) => const DemoPage(),
         '/login': (context) => const LoginPage(),
         '/shift': (context) => const ShiftPage(),
         '/home': (context) => const HomePage(),
